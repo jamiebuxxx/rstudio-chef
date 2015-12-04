@@ -46,6 +46,12 @@ service "shiny-server" do
   action [:enable, :start]
 end
 
+directory "/etc/shiny-server" do
+  mode "0755"
+  owner "root"
+  group "root"
+end
+
 template "/etc/shiny-server/shiny-server.conf" do
   source "etc/shiny-server/shiny-server.conf.erb"
   mode "0644"
