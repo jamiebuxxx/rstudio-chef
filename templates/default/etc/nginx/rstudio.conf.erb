@@ -44,7 +44,7 @@ server {
     rewrite ^<%= node[:rstudio][:nginx][:shiny_location] %>(.*)$ /$1 break;
   <% end %>
     proxy_pass http://<%= node[:rstudio][:shiny][:www_address] %>:<%= node[:rstudio][:shiny][:www_port] %>;
-    proxy_redirect http://<%= node[:rstudio][:shiny][:www_address] %>:<%= node[:rstudio][:shiny][:www_port] %>/ $scheme://$host<%= node[:rstudio][:nginx][:location] %>;
+    proxy_redirect http://<%= node[:rstudio][:shiny][:www_address] %>:<%= node[:rstudio][:shiny][:www_port] %>/ $scheme://$host<%= node[:rstudio][:nginx][:shiny_location] %>;
   }
   <% end %>
   <% end %>

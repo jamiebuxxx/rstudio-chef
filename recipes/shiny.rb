@@ -26,10 +26,10 @@ when "ubuntu", "debian"
     r_package "shiny"
 end
 
-group "shiny"
+group "#{node['rstudio']['shiny']['user']}"
 
-user "shiny" do
-  gid "shiny"
+user "#{node['rstudio']['shiny']['user']}" do
+  gid "#{node['rstudio']['shiny']['user']}"
   action :create
 end
 
@@ -46,15 +46,9 @@ service "shiny-server" do
   action [:enable, :start]
 end
 
-directory "/etc/shiny-server" do
-  mode "0755"
-  owner "root"
-  group "root"
-end
-
-template "/etc/shiny-server/shiny-server.conf" do
+template "/opt/shiny-server/config/default.config" do
   source "etc/shiny-server/shiny-server.conf.erb"
-  mode "0644"
+  mode "0664"
   owner "root"
   group "root"
   notifies :reload, "service[shiny-server]"

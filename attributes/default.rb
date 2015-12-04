@@ -44,9 +44,9 @@ default['rstudio']['ssl']['key_file'] = ''
 
 # Shiny server
 default['rstudio']['shiny']['user'] = 'shiny'
-default['rstudio']['shiny']['www_port'] = '8100'
+default['rstudio']['shiny']['www_port'] = '3838'
 default['rstudio']['shiny']['www_address'] = '127.0.0.1'
-default['rstudio']['shiny']['site_dir'] = '/var/shiny-server/www'
+default['rstudio']['shiny']['site_dir'] = '/srv/shiny-server'
 default['rstudio']['shiny']['log_dir'] = '/var/log/shiny-server'
 default['rstudio']['shiny']['directory_index'] = 'on'
 
@@ -56,4 +56,4 @@ default['rstudio']['shiny']['arch'] = node['kernel']['machine'] =~ /x86_64/ ? "a
 
 # Shiny server supports the users cookbook for HTTP Auth
 default['rstudio']['shiny']['htpasswd_file'] = ''
-default['rstudio']['shiny']['htpasswd_group'] = 'sysadmin'
+default['rstudio']['shiny']['htpasswd_group'] = 'rstudio'

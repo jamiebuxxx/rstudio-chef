@@ -9,7 +9,7 @@ end
 
 case node["platform"].downcase
 when "ubuntu"
-    template_file = "/etc/nginx/sites-available/#{server_name}"
+    template_file = "/etc/nginx/conf.d/rstudio.conf"
 end
 
 if node['rstudio']['ssl']['crt_file'] != '' && node['rstudio']['ssl']['crt_file'] != ''
@@ -26,5 +26,3 @@ template template_file do
     variables({:use_ssl => use_ssl})
     notifies :reload, "service[nginx]"
 end
-
-nginx_site server_name
