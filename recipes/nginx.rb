@@ -5,6 +5,10 @@ service 'nginx' do
   action [:enable, :start]
 end
 
+file "/etc/nginx/site-enabled/default" do
+  action :delete
+end
+
 # Only configure Nginx if the server_name attribute has been set.
 if node['rstudio']['nginx']['server_name'] == ''
     raise ArgumentError, "You must specify a server_name to configure Nginx support."
